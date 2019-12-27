@@ -43,7 +43,7 @@ fi
 
 RAW_VERSION="$1"
 SCRIPT_DIR=$(real_base_name "$0")
-VERSION="${RAW_VERSION}+nsoperations"
+VERSION="${RAW_VERSION}+streamlayer"
 TEMP_DIR=$(mktemp -d)
 
 BOTTLE_OUTPUT="$TEMP_DIR/bottle.txt"
@@ -55,7 +55,7 @@ output "Using temporary directory $TEMP_DIR"
 
 cd "$TEMP_DIR" || fail "Could not change directories to $TEMP_DIR"
 
-git clone https://github.com/nsoperations/carthage carthage || fail "Could not clone nsoperations/carthage from github"
+git clone https://github.com/streamlayer/carthage carthage || fail "Could not clone streamlayer/carthage from github"
 
 cd carthage > /dev/null
 
@@ -107,7 +107,14 @@ sed -i "" -E "s/^(.*sha256[[:space:]]*\")(.*)(\".*)$/\1${BINARY_HASH}\3/g" "$FOR
 
 output "Uploading to bintray..."
 
-curl --show-error --fail -s --request PUT --user "werner77:${BINTRAY_API_KEY}" --header "X-Checksum-Sha2: ${BINARY_HASH}" --header "X-Bintray-Package: Carthage" --header "X-Bintray-Version: ${VERSION}" --header "X-Bintray-Publish: 1" --upload-file "./carthage--${RAW_VERSION}.mojave.bottle.tar.gz" "https://api.bintray.com/content/nsoperations/bottles-formulas/carthage-${RAW_VERSION}.mojave.bottle.tar.gz" || fail "Could not upload package to bintray"
+curl --show-error --verbose --fail -s --request PUT --user "avvs:${BINTRAY_API_KEY}" \
+	--header "X-Checksum-Sha2: ${BINARY_HASH}" \
+	--header "X-Bintray-Package: Carthage" \
+	--header "X-Bintray-Version: ${VERSION}" \
+	--header "X-Bintray-Publish: 1" \
+	--upload-file "./carthage--${RAW_VERSION}.catalina.bottle.tar.gz" \
+	"https://api.bintray.com/content/streamlayer/bottles-formulas/carthage-${RAW_VERSION}.catalina.bottle.tar.gz" \
+	|| fail "Could not upload package to bintray"
 
 output "Pushing updated formula"
 
@@ -117,7 +124,7 @@ git push || fail "Could not push formula to remote"
 output "Testing whether install works"
 
 brew uninstall carthage
-brew install nsoperations/formulas/carthage || fail "Could not install carthage"
+brew install streamlayer/formulas/carthage || fail "Could not install carthage"
 
 output "Done."
 

@@ -1,24 +1,24 @@
 class Carthage < Formula
   desc "Decentralized dependency manager for Cocoa"
-  homepage "https://github.com/nsoperations/Carthage"
-  url "https://github.com/nsoperations/Carthage.git",
-      :tag      => "0.43.1+nsoperations",
+  homepage "https://github.com/streamlayer/Carthage"
+  url "https://github.com/streamlayer/Carthage.git",
+      :tag      => "0.43.1+streamlayer",
       :version  => "0.43.1",
-      :revision => "812da6dc40e9f54cf306d0489462ee0333882112",
+      :revision => "59ba69cdc48579caaafe67ef94a7fb331cc67eca",
       :shallow  => false
-  head "https://github.com/nsoperations/Carthage.git", :shallow => false
+  head "https://github.com/streamlayer/Carthage.git", :shallow => false
 
-  depends_on :xcode => ["10.2", :build]
+  depends_on :xcode => ["11.0", :build]
 
   bottle do
-    root_url "https://dl.bintray.com/nsoperations/bottles-formulas"
+    root_url "https://dl.bintray.com/streamlayer/bottles-formulas"
     cellar :any_skip_relocation
-    sha256 "dd06d4e5e226b6a645c04ca960c8fab1651670069cd55a3cc49c3d260645cb52" => :mojave
+    sha256 "afbeff5ecadcc57ca45661672a9ec893742724ad88077060b55c485b680e74b6" => :catalina
   end
 
   def install
-    if MacOS::Xcode.version >= "10.2" && MacOS.full_version < "10.14.4" && MacOS.version >= "10.14"
-      odie "Xcode >=10.2 requires macOS >=10.14.4 to build Swift formulae."
+    if MacOS::Xcode.version >= "11.0" && MacOS.full_version < "10.15.0" && MacOS.version >= "10.15"
+      odie "Xcode >=11.0 requires macOS >=10.15.0 to build Swift formulae."
     end
 
     system "make", "prefix_install", "PREFIX=#{prefix}"
