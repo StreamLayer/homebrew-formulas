@@ -2,9 +2,9 @@ class Prefixify < Formula
   desc "Prefixes swift public & open identifier"
   homepage "https://github.com/streamlayer/prefixify"
   url "https://github.com/streamlayer/prefixify.git",
-      :tag      => "0.0.4+streamlayer",
-      :version  => "0.0.4",
-      :revision => "f3f426d5413046a45c05223a6305cd0326f202f9",
+      :tag      => "0.0.5+streamlayer",
+      :version  => "0.0.5",
+      :revision => "8a6645f43a797354c8691d4c0eabc938eb17d630",
       :shallow  => false
   head "https://github.com/streamlayer/prefixify.git", :shallow => false
 
@@ -13,7 +13,7 @@ class Prefixify < Formula
   bottle do
     root_url "https://dl.bintray.com/streamlayer/bottles-formulas"
     cellar :any_skip_relocation
-    sha256 "f3f5fff533cc6ba39f68a3f447423f65ff62d39e67292baca53b8f3a9863d28a" => :catalina
+    sha256 "485ca559e50187dab69a41723a6a777d379212629a64dcae9b408acc9bc7154f" => :catalina
   end
 
   def install
