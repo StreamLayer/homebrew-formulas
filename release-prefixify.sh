@@ -87,7 +87,7 @@ sed -i "" -E "s/^(.*:version[[:space:]]*=>[[:space:]]*\")(.*)(\".*)$/\1${RAW_VER
 sed -i "" -E "s/^(.*:revision[[:space:]]*=>[[:space:]]*\")(.*)(\".*)$/\1${COMMIT_HASH}\3/g" "$FORMULA_FILE"
 
 brew uninstall prefixify
-brew install --build-bottle "$FORMULA_FILE" || fail "Build bottle failed"
+brew install --verbose --build-bottle "$FORMULA_FILE" || fail "Build bottle failed"
 
 INSTALLED_VERSION=$(/usr/local/bin/swift-prefixify version)
 
