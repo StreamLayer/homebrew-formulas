@@ -2,9 +2,9 @@ class Carthage < Formula
   desc "Decentralized dependency manager for Cocoa"
   homepage "https://github.com/streamlayer/Carthage"
   url "https://github.com/streamlayer/Carthage.git",
-      :tag      => "0.43.1+streamlayer",
-      :version  => "0.43.1",
-      :revision => "59ba69cdc48579caaafe67ef94a7fb331cc67eca",
+      :tag      => "0.43.2+streamlayer",
+      :version  => "0.43.2",
+      :revision => "1026a648ae3056d907063d351edd75bcaacdf795",
       :shallow  => false
   head "https://github.com/streamlayer/Carthage.git", :shallow => false
 
@@ -13,7 +13,7 @@ class Carthage < Formula
   bottle do
     root_url "https://dl.bintray.com/streamlayer/bottles-formulas"
     cellar :any_skip_relocation
-    sha256 "afbeff5ecadcc57ca45661672a9ec893742724ad88077060b55c485b680e74b6" => :catalina
+    sha256 "0ef3a0963e2fb86820a91b5366cac58c2895f06ed8556a5ea2abd3db4ded3c95" => :catalina
   end
 
   def install
